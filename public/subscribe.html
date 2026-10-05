@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscribe | Unchained</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">UNCHAINED</div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/dashboard.html">Dashboard</a>
+          <a href="/login.html">Sign In</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="auth-page">
+      <div class="auth-card wide">
+        <h1>Join Unchained</h1>
+        <p>Select the membership that matches your access level.</p>
+
+        <form id="subscribeForm">
+          <div class="subscription-plan">
+            <div>
+              <span class="plan-tag">Monthly</span>
+              <h2>$15 / month</h2>
+            </div>
+            <div class="plan-price">$15</div>
+          </div>
+
+          <label>
+            Membership Type
+            <select name="plan">
+              <option value="monthly">Monthly Membership</option>
+              <option value="premium">Premium Membership</option>
+            </select>
+          </label>
+
+          <label>
+            Amount
+            <input type="number" name="amount" value="15" min="15" step="1" />
+          </label>
+
+          <button class="button primary full" type="submit">Activate Subscription</button>
+        </form>
+      </div>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

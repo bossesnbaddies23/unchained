@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In | Unchained</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">UNCHAINED</div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/subscribe.html">Subscribe</a>
+          <a href="/register.html">Register</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="auth-page">
+      <div class="auth-card">
+        <h1>Welcome back</h1>
+        <p>Sign in to your membership account.</p>
+
+        <form id="loginForm">
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+
+          <label>
+            Password
+            <input type="password" name="password" required />
+          </label>
+
+          <button class="button primary full" type="submit">Sign In</button>
+        </form>
+
+        <p class="auth-switch">
+          Need an account?
+          <a href="/register.html">Create one</a>
+        </p>
+      </div>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

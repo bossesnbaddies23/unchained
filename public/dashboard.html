@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Unchained</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">UNCHAINED</div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/subscribe.html">Subscribe</a>
+          <button class="button small secondary" id="logoutBtn" type="button">Log Out</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="dashboard-page">
+      <div class="container dashboard-grid">
+        <aside class="dashboard-panel">
+          <p class="eyebrow">Member account</p>
+          <h1 id="memberName">Loading...</h1>
+          <p id="memberPlan">Checking membership status...</p>
+          <div class="member-meta">
+            <span id="memberEmail">—</span>
+          </div>
+        </aside>
+
+        <section class="dashboard-panel large">
+          <p class="eyebrow">Overview</p>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <span>Monthly revenue</span>
+              <strong id="monthlyRevenue">$0</strong>
+            </div>
+            <div class="stat-box">
+              <span>Membership</span>
+              <strong id="statusBadge">Inactive</strong>
+            </div>
+          </div>
+
+          <div class="dashboard-actions">
+            <a class="button primary" href="/subscribe.html">Update Subscription</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Unchained</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">UNCHAINED</div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/login.html">Sign In</a>
+          <a href="/subscribe.html">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="auth-page">
+      <div class="auth-card">
+        <h1>Create your account</h1>
+        <p>Join the community and unlock your membership.</p>
+
+        <form id="registerForm">
+          <label>
+            Full Name
+            <input type="text" name="name" required />
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+
+          <label>
+            Password
+            <input type="password" name="password" required minlength="6" />
+          </label>
+
+          <button class="button primary full" type="submit">Create Account</button>
+        </form>
+
+        <p class="auth-switch">
+          Already a member?
+          <a href="/login.html">Sign in</a>
+        </p>
+      </div>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
