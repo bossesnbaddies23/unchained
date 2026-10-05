@@ -1,122 +1,34 @@
-const api = {
-  async request(path, options = {}) {
-    const response = await fetch(path, {
-      headers: { 'Content-Type': 'application/json' },
-      ...options,
-    });
+# Unchained
 
-    const data = await response.json().catch(() => ({}));
+A public subscription and membership website for the Unchained brand.
 
-    if (!response.ok) {
-      throw new Error(data.message || 'Request failed.');
-    }
+## Local development
 
-    return data;
-  },
-};
+```bash
+npm install
+npm start
+```
 
-const registerForm = document.getElementById('registerForm');
-const loginForm = document.getElementById('loginForm');
-const subscribeForm = document.getElementById('subscribeForm');
-const logoutBtn = document.getElementById('logoutBtn');
+Then open:
+- http://localhost:3000/
 
-if (registerForm) {
-  registerForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const formData = new FormData(registerForm);
-    const payload = Object.fromEntries(formData.entries());
+## Deploy to Render
 
-    try {
-      const result = await api.request('/api/register', {
-        method: 'POST',
-        body: JSON.stringify(payload),
-      });
+1. Push this repo to GitHub.
+2. Sign in to Render.
+3. Click New + and choose Blueprint.
+4. Connect this repository.
+5. Render will read `render.yaml` and deploy the app.
+6. Add the custom domain `bossesnbaddies.com` in Render settings.
 
-      localStorage.setItem('unchainedUser', JSON.stringify(result.user));
-      window.location.href = '/dashboard.html';
-    } catch (error) {
-      alert(error.message);
-    }
-  });
-}
+## Public website flow
 
-if (loginForm) {
-  loginForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const formData = new FormData(loginForm);
-    const payload = Object.fromEntries(formData.entries());
+- Home page
+- Sign in
+- Register
+- Subscribe
+- Member dashboard
 
-    try {
-      const result = await api.request('/api/login', {
-        method: 'POST',
-        body: JSON.stringify(payload),
-      });
+## Notes
 
-      localStorage.setItem('unchainedUser', JSON.stringify(result.user));
-      window.location.href = '/dashboard.html';
-    } catch (error) {
-      alert(error.message);
-    }
-  });
-}
-
-if (subscribeForm) {
-  subscribeForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const formData = new FormData(subscribeForm);
-    const payload = Object.fromEntries(formData.entries());
-
-    try {
-      const result = await api.request('/api/subscribe', {
-        method: 'POST',
-        body: JSON.stringify(payload),
-      });
-
-      const user = result.user;
-      localStorage.setItem('unchainedUser', JSON.stringify(user));
-      window.location.href = '/dashboard.html';
-    } catch (error) {
-      alert(error.message);
-    }
-  });
-}
-
-if (logoutBtn) {
-  logoutBtn.addEventListener('click', async () => {
-    try {
-      await api.request('/api/logout', { method: 'POST' });
-      localStorage.removeItem('unchainedUser');
-      window.location.href = '/login.html';
-    } catch (error) {
-      alert(error.message);
-    }
-  });
-}
-
-async function loadDashboard() {
-  const memberName = document.getElementById('memberName');
-  const memberPlan = document.getElementById('memberPlan');
-  const memberEmail = document.getElementById('memberEmail');
-  const monthlyRevenue = document.getElementById('monthlyRevenue');
-  const statusBadge = document.getElementById('statusBadge');
-
-  if (!memberName) return;
-
-  try {
-    const session = await api.request('/api/session');
-    const user = session.user;
-
-    memberName.textContent = user.name;
-    memberEmail.textContent = user.email;
-    memberPlan.textContent = user.plan === 'none' ? 'No active subscription' : `Active ${user.plan} membership`;
-    monthlyRevenue.textContent = `$${Number(user.monthlyRevenue || 0).toFixed(2)}`;
-    statusBadge.textContent = user.active ? 'Active' : 'Inactive';
-    statusBadge.style.color = user.active ? '#7cf5c2' : '#f5b7b1';
-  } catch (error) {
-    window.location.href = '/login.html';
-  }
-}
-
-if (document.body) {
-  loadDashboard();
-}
+This is a working public prototype for a membership platform and is ready for a live deployment target.
